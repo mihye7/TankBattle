@@ -317,31 +317,38 @@ void GameWidget::drawUI(QPainter &p)
     p.setFont(f);
 
     int barY = GAME_HEIGHT + 10;
-    p.drawText(10, barY, 22,
+    int barH = 22;
+    p.drawText(10, barY, 100, barH,
+               Qt::AlignLeft | Qt::AlignVCenter,
                QString("LEVEL %1").arg(m_engine->level()));
 
-    p.drawText(120, barY, 22,
+    p.drawText(120, barY, 130, barH,
+               Qt::AlignLeft | Qt::AlignVCenter,
                QString("SCORE %1").arg(m_engine->score()));
 
-    p.drawText(260, barY, 22,
+    p.drawText(260, barY, 130, barH,
+               Qt::AlignLeft | Qt::AlignVCenter,
                QString::fromUtf8("LIVES %1").arg(m_engine->lives()));
 
     // enemy counter
     QString enemyStr = QString::fromUtf8("ENEMIES %1/%2")
         .arg(m_engine->enemiesKilled()).arg(m_engine->enemiesToSpawn());
-    p.drawText(400, barY, 22, enemyStr);
+    p.drawText(400, barY, 200, barH,
+               Qt::AlignLeft | Qt::AlignVCenter, enemyStr);
 
     // freeze indicator
     if (m_engine->isFrozen()) {
         p.setPen(QColor(0x4F, 0xC3, 0xF7));
-        p.drawText(520, barY, 22, "FREEZE!");
+        p.drawText(520, barY, 80, barH,
+                   Qt::AlignLeft | Qt::AlignVCenter, "FREEZE!");
     }
 
     // minimap label
     f.setPointSize(8);
     p.setFont(f);
     p.setPen(QColor(0x88, 0x88, 0x88));
-    p.drawText(GAME_WIDTH + 2, 12, 16, "T\nA\nN\nK\n\nB\nA\nT\nT\nL\nE");
+    p.drawText(QRect(GAME_WIDTH + 2, 12, 16, GAME_HEIGHT),
+               Qt::AlignTop | Qt::AlignHCenter, "T\nA\nN\nK\n\nB\nA\nT\nT\nL\nE");
 }
 
 // ============================================================
