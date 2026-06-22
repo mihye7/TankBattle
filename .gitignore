@@ -1,0 +1,36 @@
+# Build
+build-*/
+release/
+debug/
+moc/
+obj/
+rcc/
+ui/
+Makefile
+Makefile.*
+
+# Qt
+*.pro.user
+*.pro.user.*
+.qmake.stash
+
+# Object files
+*.o
+*.obj
+*.moc
+*.rcc
+*.qm
+*.cc
+
+# IDE
+.vs/
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+Thumbs.db
+.DS_Store
+Desktop.ini
